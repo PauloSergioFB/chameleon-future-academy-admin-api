@@ -73,7 +73,7 @@ public static class CoursesEndpoints
         if (size < 1) size = 20;
 
         var query = db.Courses
-            .OrderBy(c => c.CourseId).Select(c => ResponseCourseDto.From(c));
+            .OrderBy(r => r.CourseId).Select(r => ResponseCourseDto.From(r));
 
         var result = await paginator.CreatePagedResultAsync(query, page, size);
 
@@ -99,9 +99,9 @@ public static class CoursesEndpoints
         if (size < 1) size = 20;
 
         var query = db.Courses
-            .Where(c => EF.Functions.Like(c.Title, $"%{title}%"))
-            .OrderBy(c => c.CourseId)
-            .Select(c => ResponseCourseDto.From(c));
+            .Where(r => EF.Functions.Like(r.Title, $"%{title}%"))
+            .OrderBy(r => r.CourseId)
+            .Select(r => ResponseCourseDto.From(r));
 
         var result = await paginator.CreatePagedResultAsync(query, page, size);
 

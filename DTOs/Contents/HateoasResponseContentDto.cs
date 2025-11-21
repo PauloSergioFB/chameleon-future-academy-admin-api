@@ -1,15 +1,16 @@
+using ChameleonFutureAcademyAdminApi.Hateoas;
 using ChameleonFutureAcademyAdminApi.Models;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Contents;
 
-public record ResponseContentDto(
+public record HateoasResponseContentDto(
     int ContentId,
     int CourseId,
     string Type,
     int Position
-)
+) : Resource
 {
-    public static ResponseContentDto From(Content content) =>
+    public static HateoasResponseContentDto From(Content content) =>
         new(
             content.ContentId,
             content.CourseId,

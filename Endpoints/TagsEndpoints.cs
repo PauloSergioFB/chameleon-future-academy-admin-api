@@ -73,7 +73,7 @@ public static class TagsEndpoints
         if (size < 1) size = 20;
 
         var query = db.Tags
-            .OrderBy(c => c.TagId).Select(c => ResponseTagDto.From(c));
+            .OrderBy(r => r.TagId).Select(r => ResponseTagDto.From(r));
 
         var result = await paginator.CreatePagedResultAsync(query, page, size);
 
@@ -99,9 +99,9 @@ public static class TagsEndpoints
         if (size < 1) size = 20;
 
         var query = db.Tags
-            .Where(c => EF.Functions.Like(c.Description, $"%{description}%"))
-            .OrderBy(c => c.TagId)
-            .Select(c => ResponseTagDto.From(c));
+            .Where(r => EF.Functions.Like(r.Description, $"%{description}%"))
+            .OrderBy(r => r.TagId)
+            .Select(r => ResponseTagDto.From(r));
 
         var result = await paginator.CreatePagedResultAsync(query, page, size);
 
