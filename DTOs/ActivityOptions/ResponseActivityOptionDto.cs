@@ -1,3 +1,4 @@
+using ChameleonFutureAcademyAdminApi.Hateoas;
 using ChameleonFutureAcademyAdminApi.Models;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.ActivityOptions;
@@ -8,7 +9,7 @@ public record ResponseActivityOptionDto(
     string Label,
     string Description,
     bool IsCorrect
-)
+) : Resource
 {
     public static ResponseActivityOptionDto From(ActivityOption option) =>
         new(

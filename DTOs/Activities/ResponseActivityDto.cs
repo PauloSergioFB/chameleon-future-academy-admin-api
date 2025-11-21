@@ -1,4 +1,5 @@
 using ChameleonFutureAcademyAdminApi.Models;
+using ChameleonFutureAcademyAdminApi.Hateoas;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Activities;
 
@@ -9,7 +10,7 @@ public record ResponseActivityDto(
     string Body,
     string Explanation,
     DateTime CreatedAt
-)
+) : Resource
 {
     public static ResponseActivityDto From(Activity activity) =>
         new(

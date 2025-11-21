@@ -1,3 +1,4 @@
+using ChameleonFutureAcademyAdminApi.Hateoas;
 using ChameleonFutureAcademyAdminApi.Models;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Contents;
@@ -7,7 +8,7 @@ public record ResponseContentDto(
     int CourseId,
     string Type,
     int Position
-)
+) : Resource
 {
     public static ResponseContentDto From(Content content) =>
         new(

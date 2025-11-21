@@ -1,3 +1,4 @@
+using ChameleonFutureAcademyAdminApi.Hateoas;
 using ChameleonFutureAcademyAdminApi.Models;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Lessons;
@@ -8,7 +9,7 @@ public record ResponseLessonDto(
     string Title,
     string Body,
     DateTime CreatedAt
-)
+) : Resource
 {
     public static ResponseLessonDto From(Lesson lesson) =>
         new(

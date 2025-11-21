@@ -1,3 +1,4 @@
+using ChameleonFutureAcademyAdminApi.Hateoas;
 using ChameleonFutureAcademyAdminApi.Models;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Badges;
@@ -7,7 +8,7 @@ public record ResponseBadgeDto(
     int CourseId,
     string Title,
     string IconUrl
-)
+) : Resource
 {
     public static ResponseBadgeDto From(Badge badge) =>
         new(
