@@ -4,28 +4,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChameleonFutureAcademyAdminApi.Models;
 
-[Table("cfa_badge")]
+[Table("CFA_BADGE")]
 [Index(nameof(Title), IsUnique = true)]
 public class Badge
 {
 
     [Key]
-    [Column("badge_id")]
+    [Column("BADGE_ID")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int BadgeId { get; set; }
 
     [Required]
-    [Column("course_id")]
+    [Column("COURSE_ID")]
     public int CourseId { get; set; }
 
     public Course Course { get; set; } = null!;
 
     [Required]
-    [Column("title")]
+    [Column("TITLE")]
     [MaxLength(100)]
     public string Title { get; set; } = string.Empty;
 
-    [Column("icon_url")]
+    [Column("ICON_URL")]
     [MaxLength(100)]
     public string IconUrl { get; set; } = string.Empty;
 

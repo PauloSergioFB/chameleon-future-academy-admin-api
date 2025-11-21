@@ -31,6 +31,8 @@ app.MapTagsEndpoints();
 app.MapContentsEndpoints();
 app.MapLessonsEndpoints();
 app.MapActivitiesEndpoints();
+app.MapActivityOptionsEndpoints();
+app.MapBadgesEndpoints();
 
 app.MapOpenApi();
 
