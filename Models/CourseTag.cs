@@ -1,0 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace ChameleonFutureAcademyAdminApi.Models;
+
+[Table("cfa_course_tag")]
+public class CourseTag
+{
+
+    [Column("course_id")]
+    public int CourseId { get; set; }
+
+    public Course Course { get; set; } = null!;
+
+    [Column("tag_id")]
+    public int TagId { get; set; }
+
+    public Tag Tag { get; set; } = null!;
+
+}
