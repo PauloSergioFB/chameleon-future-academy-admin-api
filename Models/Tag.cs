@@ -19,6 +19,6 @@ public class Tag
     [MaxLength(100)]
     public string Description { get; set; } = string.Empty;
 
-    public ICollection<CourseTag> CourseTags { get; set; } = new List<CourseTag>();
+    public ICollection<CourseTag> CourseTags { get; set; } = [];
 
 }

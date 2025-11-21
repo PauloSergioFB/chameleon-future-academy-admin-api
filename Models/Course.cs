@@ -35,6 +35,6 @@ public class Course
     [Column("created_at", TypeName = "TIMESTAMP")]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-    public ICollection<CourseTag> CourseTags { get; set; } = new List<CourseTag>();
+    public ICollection<CourseTag> CourseTags { get; set; } = [];
 
 }
