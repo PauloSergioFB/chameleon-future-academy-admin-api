@@ -29,6 +29,7 @@ var app = builder.Build();
 app.MapCoursesEndpoints();
 app.MapTagsEndpoints();
 app.MapContentsEndpoints();
+app.MapLessonsEndpoints();
 
 app.MapOpenApi();
 
