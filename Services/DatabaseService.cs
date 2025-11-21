@@ -8,11 +8,14 @@ public static class DatabaseService
 
     public static void RegisterDatabaseService(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<AppDbContext>(
-            options => options.UseOracle(configuration.GetConnectionString("OracleConnection"))
+        services.AddDbContext<AppDbContext>(options =>
+        {
+            options.UseOracle(
+                configuration.GetConnectionString("OracleConnection"),
+                b => b.MigrationsAssembly("Disabled")
+            );
+        }
         );
-
-        services.AddDatabaseDeveloperPageExceptionFilter();
     }
 
 }

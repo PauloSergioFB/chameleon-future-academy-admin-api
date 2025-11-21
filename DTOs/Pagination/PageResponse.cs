@@ -2,7 +2,7 @@ using ChameleonFutureAcademyAdminApi.Hateoas;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Pagination;
 
-public record PagedResult<T>(
+public record PageResponse<T>(
     IEnumerable<T> Items,
     int Page,
     int Size,

@@ -1,9 +1,9 @@
 using DotNetEnv;
+using ChameleonFutureAcademyAdminApi.Endpoints;
 using ChameleonFutureAcademyAdminApi.Services;
 using Scalar.AspNetCore;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ChameleonFutureAcademyAdminApi.Filters;
 
 Env.Load();
 
@@ -13,7 +13,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
     options.SerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower;
-    options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
 });
 
 builder.Services.RegisterDatabaseService(builder.Configuration);
@@ -21,14 +21,12 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddSingleton<ValidationFilter>();
 builder.Services.AddSingleton<HateoasService>();
+builder.Services.AddScoped<PaginationService>();
 
 var app = builder.Build();
 
-var api = app.MapGroup("/api");
-
-api.AddEndpointFilter<ValidationFilter>();
+app.MapCoursesEndpoints();
 
 app.MapOpenApi();
 

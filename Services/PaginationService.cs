@@ -6,7 +6,7 @@ namespace ChameleonFutureAcademyAdminApi.Services;
 public class PaginationService
 {
 
-    public async Task<PagedResult<T>> CreatePagedResultAsync<T>(
+    public async Task<PageResponse<T>> CreatePagedResultAsync<T>(
         IQueryable<T> query,
         int page,
         int size)

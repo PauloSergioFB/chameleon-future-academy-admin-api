@@ -4,35 +4,35 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChameleonFutureAcademyAdminApi.Models;
 
-[Table("cfa_user_account")]
+[Table("CFA_COURSE")]
 [Index(nameof(Title), IsUnique = true)]
 public class Course
 {
 
     [Key]
-    [Column("course_id")]
+    [Column("COURSE_ID")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int CourseId { get; set; }
 
     [Required]
-    [Column("title")]
+    [Column("TITLE")]
     [MaxLength(100)]
-    public string Title { get; set; } = string.Empty;
+    public string? Title { get; set; }
 
-    [Column("description")]
+    [Column("DESCRIPTION")]
     [MaxLength(255)]
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
 
-    [Column("author")]
+    [Column("AUTHOR")]
     [MaxLength(100)]
-    public string Author { get; set; } = string.Empty;
+    public string? Author { get; set; }
 
-    [Column("thumbnail_url")]
+    [Column("THUMBNAIL_URL")]
     [MaxLength(100)]
-    public string ThumbnailUrl { get; set; } = string.Empty;
+    public string? ThumbnailUrl { get; set; }
 
     [Required]
-    [Column("created_at", TypeName = "TIMESTAMP")]
+    [Column("CREATED_AT", TypeName = "TIMESTAMP")]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public ICollection<CourseTag> CourseTags { get; set; } = [];

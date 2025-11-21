@@ -13,20 +13,34 @@ public static class PaginationHateoas
         HttpContext ctx)
     {
         var links = new List<Link>();
-
         var gen = ctx.RequestServices.GetRequiredService<HateoasService>();
 
-        links.Add(gen.Build(routeName, new { page, size }, "self", "GET", ctx));
+        var rawQuery = ctx.Request.QueryString.Value ?? "";
+        var qs = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(rawQuery);
+
+        var baseParams = qs.ToDictionary(
+            x => x.Key,
+            x => (object)x.Value.ToString()
+        );
+
+        baseParams["page"] = page;
+        baseParams["size"] = size;
+
+        links.Add(gen.Build(routeName, baseParams, "self", "GET", ctx));
 
         if (page > 1)
-        {
-            links.Add(gen.Build(routeName, new { page = page - 1, size }, "prev", "GET", ctx));
-        }
+            links.Add(gen.Build(
+                routeName,
+                new Dictionary<string, object>(baseParams) { ["page"] = page - 1 },
+                "prev", "GET", ctx)
+            );
 
         if (page < totalPages)
-        {
-            links.Add(gen.Build(routeName, new { page = page + 1, size }, "next", "GET", ctx));
-        }
+            links.Add(gen.Build(
+                routeName,
+                new Dictionary<string, object>(baseParams) { ["page"] = page + 1 },
+                "next", "GET", ctx)
+            );
 
         return links;
     }

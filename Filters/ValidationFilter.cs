@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ChameleonFutureAcademyAdminApi.Filters;
 
-public partial class ValidationFilter : IEndpointFilter
+public partial class ValidationFilter<T> : IEndpointFilter
 {
 
     [GeneratedRegex("(?<!^)([A-Z])")]
@@ -21,9 +21,7 @@ public partial class ValidationFilter : IEndpointFilter
         EndpointFilterInvocationContext context,
         EndpointFilterDelegate next)
     {
-        var dto = context.Arguments
-            .FirstOrDefault(a => a is not null && a.GetType().IsClass && !a.GetType().IsPrimitive);
-
+        var dto = context.Arguments.OfType<T>().FirstOrDefault();
         if (dto is not null)
         {
             var results = new List<ValidationResult>();
@@ -34,7 +32,7 @@ public partial class ValidationFilter : IEndpointFilter
                 var errors = results.ToDictionary(
                     r => ToSnakeCase(r.MemberNames.FirstOrDefault() ?? "error"),
                     r => r.ErrorMessage ?? "Valor inválido."
-                );
+                    );
 
                 return Results.BadRequest(errors);
             }
