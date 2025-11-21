@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore;
 using ChameleonFutureAcademyAdminApi.Data;
 using ChameleonFutureAcademyAdminApi.DTOs.Lessons;
 using ChameleonFutureAcademyAdminApi.DTOs.Pagination;

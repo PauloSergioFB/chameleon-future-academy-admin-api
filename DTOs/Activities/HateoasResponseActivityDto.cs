@@ -1,17 +1,18 @@
 using ChameleonFutureAcademyAdminApi.Models;
+using ChameleonFutureAcademyAdminApi.Hateoas;
 
 namespace ChameleonFutureAcademyAdminApi.DTOs.Activities;
 
-public record ResponseActivityDto(
+public record HateoasResponseActivityDto(
     int ActivityId,
     int ContentId,
     string Title,
     string Body,
     string Explanation,
     DateTime CreatedAt
-)
+) : Resource
 {
-    public static ResponseActivityDto From(Activity activity) =>
+    public static HateoasResponseActivityDto From(Activity activity) =>
         new(
             activity.ActivityId,
             activity.ContentId,

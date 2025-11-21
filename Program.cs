@@ -30,6 +30,7 @@ app.MapCoursesEndpoints();
 app.MapTagsEndpoints();
 app.MapContentsEndpoints();
 app.MapLessonsEndpoints();
+app.MapActivitiesEndpoints();
 
 app.MapOpenApi();
 
