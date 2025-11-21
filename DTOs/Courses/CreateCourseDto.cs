@@ -8,7 +8,7 @@ public record CreateCourseDto
     [Required(ErrorMessage = "O título é obrigatório.")]
     [MinLength(1, ErrorMessage = "O título não pode estar vazio.")]
     [MaxLength(100, ErrorMessage = "O título pode ter no máximo 100 caracteres.")]
-    public string? Title { get; init; }
+    public string Title { get; init; } = string.Empty;
 
     [MaxLength(255, ErrorMessage = "A descrição pode ter no máximo 255 caracteres.")]
     public string? Description { get; init; }

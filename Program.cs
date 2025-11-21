@@ -27,6 +27,7 @@ builder.Services.AddScoped<PaginationService>();
 var app = builder.Build();
 
 app.MapCoursesEndpoints();
+app.MapTagsEndpoints();
 
 app.MapOpenApi();
 

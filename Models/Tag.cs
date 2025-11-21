@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChameleonFutureAcademyAdminApi.Models;
 
-[Table("cfa_tag")]
+[Table("CFA_TAG")]
 [Index(nameof(Description), IsUnique = true)]
 public class Tag
 {
 
     [Key]
-    [Column("tag_id")]
+    [Column("TAG_ID")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int TagId { get; set; }
 
     [Required]
-    [Column("description")]
+    [Column("DESCRIPTION")]
     [MaxLength(100)]
     public string Description { get; set; } = string.Empty;
 
