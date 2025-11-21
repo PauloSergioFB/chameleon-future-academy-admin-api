@@ -27,41 +27,41 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("ActivityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("activity_id");
+                        .HasColumnName("ACTIVITY_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ActivityId"));
 
                     b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("CLOB")
-                        .HasColumnName("body");
+                        .HasColumnName("BODY");
 
                     b.Property<int>("ContentId")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("content_id");
+                        .HasColumnName("CONTENT_ID");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP")
-                        .HasColumnName("created_at");
+                        .HasColumnName("CREATED_AT");
 
                     b.Property<string>("Explanation")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("NVARCHAR2(500)")
-                        .HasColumnName("explanation");
+                        .HasColumnName("EXPLANATION");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("title");
+                        .HasColumnName("TITLE");
 
                     b.HasKey("ActivityId");
 
                     b.HasIndex("ContentId")
                         .IsUnique();
 
-                    b.ToTable("cfa_activity");
+                    b.ToTable("CFA_ACTIVITY");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.ActivityOption", b =>
@@ -69,29 +69,29 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("ActivityOptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("activity_option_id");
+                        .HasColumnName("ACTIVITY_OPTION_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ActivityOptionId"));
 
                     b.Property<int>("ActivityId")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("activity_id");
+                        .HasColumnName("ACTIVITY_ID");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("NVARCHAR2(150)")
-                        .HasColumnName("description");
+                        .HasColumnName("DESCRIPTION");
 
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("BOOLEAN")
-                        .HasColumnName("is_correct");
+                        .HasColumnName("IS_CORRECT");
 
                     b.Property<string>("Label")
                         .IsRequired()
                         .HasMaxLength(1)
                         .HasColumnType("NVARCHAR2(1)")
-                        .HasColumnName("label");
+                        .HasColumnName("LABEL");
 
                     b.HasKey("ActivityOptionId");
 
@@ -101,7 +101,7 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.HasIndex("ActivityId", "Label")
                         .IsUnique();
 
-                    b.ToTable("cfa_activity_option");
+                    b.ToTable("CFA_ACTIVITY_OPTION");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.Badge", b =>
@@ -109,25 +109,25 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("BadgeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("badge_id");
+                        .HasColumnName("BADGE_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BadgeId"));
 
                     b.Property<int>("CourseId")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("course_id");
+                        .HasColumnName("COURSE_ID");
 
                     b.Property<string>("IconUrl")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("icon_url");
+                        .HasColumnName("ICON_URL");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("title");
+                        .HasColumnName("TITLE");
 
                     b.HasKey("BadgeId");
 
@@ -136,7 +136,7 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.HasIndex("Title")
                         .IsUnique();
 
-                    b.ToTable("cfa_badge");
+                    b.ToTable("CFA_BADGE");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.Content", b =>
@@ -144,30 +144,30 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("ContentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("content_id");
+                        .HasColumnName("CONTENT_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContentId"));
 
                     b.Property<int>("CourseId")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("course_id");
+                        .HasColumnName("COURSE_ID");
 
                     b.Property<int>("Position")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("position");
+                        .HasColumnName("POSITION");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("NVARCHAR2(20)")
-                        .HasColumnName("type");
+                        .HasColumnName("TYPE");
 
                     b.HasKey("ContentId");
 
                     b.HasIndex("CourseId", "Position")
                         .IsUnique();
 
-                    b.ToTable("cfa_content");
+                    b.ToTable("CFA_CONTENT");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.Course", b =>
@@ -175,44 +175,41 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("CourseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("course_id");
+                        .HasColumnName("COURSE_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseId"));
 
                     b.Property<string>("Author")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("author");
+                        .HasColumnName("AUTHOR");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP")
-                        .HasColumnName("created_at");
+                        .HasColumnName("CREATED_AT");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("NVARCHAR2(255)")
-                        .HasColumnName("description");
+                        .HasColumnName("DESCRIPTION");
 
                     b.Property<string>("ThumbnailUrl")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("thumbnail_url");
+                        .HasColumnName("THUMBNAIL_URL");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("title");
+                        .HasColumnName("TITLE");
 
                     b.HasKey("CourseId");
 
                     b.HasIndex("Title")
                         .IsUnique();
 
-                    b.ToTable("cfa_user_account");
+                    b.ToTable("CFA_COURSE");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.CourseTag", b =>
@@ -237,35 +234,35 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("LessonId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("lesson_id");
+                        .HasColumnName("LESSON_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LessonId"));
 
                     b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("CLOB")
-                        .HasColumnName("body");
+                        .HasColumnName("BODY");
 
                     b.Property<int>("ContentId")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("content_id");
+                        .HasColumnName("CONTENT_ID");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP")
-                        .HasColumnName("created_at");
+                        .HasColumnName("CREATED_AT");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("title");
+                        .HasColumnName("TITLE");
 
                     b.HasKey("LessonId");
 
                     b.HasIndex("ContentId")
                         .IsUnique();
 
-                    b.ToTable("cfa_lesson");
+                    b.ToTable("CFA_LESSON");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.Tag", b =>
@@ -273,7 +270,7 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                     b.Property<int>("TagId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("tag_id");
+                        .HasColumnName("TAG_ID");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagId"));
 
@@ -281,14 +278,14 @@ namespace ChameleonFutureAcademyAdminApi.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("description");
+                        .HasColumnName("DESCRIPTION");
 
                     b.HasKey("TagId");
 
                     b.HasIndex("Description")
                         .IsUnique();
 
-                    b.ToTable("cfa_tag");
+                    b.ToTable("CFA_TAG");
                 });
 
             modelBuilder.Entity("ChameleonFutureAcademyAdminApi.Models.Activity", b =>
