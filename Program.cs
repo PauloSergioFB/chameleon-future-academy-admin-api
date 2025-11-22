@@ -9,6 +9,8 @@ Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseUrls("http://0.0.0.0:5070");
+
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
@@ -36,12 +38,9 @@ app.MapBadgesEndpoints();
 
 app.MapOpenApi();
 
-if (app.Environment.IsDevelopment())
+app.MapScalarApiReference(options =>
 {
-    app.MapScalarApiReference(options =>
-    {
-        options.Title = "Chameleon Future Academy Admin API";
-    });
-}
+    options.Title = "Chameleon Future Academy Admin API";
+});
 
 app.Run();

@@ -6,7 +6,7 @@
 
 O Chameleon Future Academy é uma plataforma educacional criada para ajudar pessoas cujas profissões estão sendo impactadas ou substituídas pelos avanços tecnológicos. Seu objetivo é facilitar a migração de carreira, oferecendo cursos focados em habilidades relevantes para o mercado do futuro.
 
-A aplicação permite criar e gerenciar contas de usuário, consultar cursos, acessar aulas e atividades, realizar matrículas e conquistar badges ao concluir formações. Tudo isso compondo um perfil acadêmico dinâmico e em constante evolução.
+A aplicação permite gerenciar cursos, conteúdos, lições, atividades, alternativas de atividades e badges, oferecendo aos administradores total controle sobre a organização e atualização do catálogo educacional.
 
 > Este repositório contém os arquivos da API Administrativa do Chameleon Future Academy, desenvolvida com .NET.
 
@@ -210,7 +210,7 @@ dotnet restore
 
 #### 2. Configurar o Ambiente
 
-Crie um arquivo .env na raiz do projeto com o seguinte conteúdo (substitua pelas suas próprias credenciais e configurações):
+Crie um arquivo ```.env``` na raiz do projeto com o seguinte conteúdo (substitua pelas suas próprias credenciais e configurações):
 
 ```bash
 ConnectionStrings__OracleConnection=Data Source=oracle.fiap.com.br:1521/orcl;User Id=<seu_usuario>;Password=<sua_senha>;
@@ -224,7 +224,7 @@ dotnet run
 ```
 
 Após a inicialização, a API estará disponível em: http://localhost:5070  
-A documentação interativa (Swagger UI) pode ser acessada em: http://localhost:5070/scalar
+A documentação interativa (Scalar) pode ser acessada em: http://localhost:5070/scalar
 
 ### Execução Via Docker
 
@@ -244,7 +244,7 @@ cd chameleon-future-academy-admin-api
 
 #### 2. Configurar o Ambiente
 
-Crie um arquivo .env na raiz do projeto com o seguinte conteúdo (substitua pelas suas próprias credenciais e configurações):
+Crie um arquivo ```.env``` na raiz do projeto com o seguinte conteúdo (substitua pelas suas próprias credenciais e configurações):
 
 ```bash
 ConnectionStrings__OracleConnection=Data Source=oracle.fiap.com.br:1521/orcl;User Id=<seu_usuario>;Password=<sua_senha>;
@@ -262,7 +262,7 @@ docker run -it --rm --env-file .env -p 5070:5070 chameleon-future-academy-admin-
 ```
 
 Após a inicialização, a API estará disponível em: http://localhost:5070  
-A documentação interativa (Swagger UI) pode ser acessada em: http://localhost:5070/scalar
+A documentação interativa (Scalar) pode ser acessada em: http://localhost:5070/scalar
 
 ## Stack Tecnológica
 
